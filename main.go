@@ -5,6 +5,7 @@ import (
     "golang.org/x/net/websocket"
     //"io"
     "net/http"
+    "strings"
     "time"
 )
 
@@ -24,7 +25,7 @@ func echoHandler(ws *websocket.Conn) {
 
         fmt.Println("Received from client: " + reply)
 
-        msg := "Received:  " + reply
+        msg := strings.ToUpper(reply)
         fmt.Println("Sent to client: " + msg)
         err = websocket.Message.Send(ws, msg);
         if err != nil {
